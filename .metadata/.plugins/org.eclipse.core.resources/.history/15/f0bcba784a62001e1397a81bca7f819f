@@ -1,0 +1,5 @@
+package kr.ch08.repository;
+
+public class User1Repository {
+
+}

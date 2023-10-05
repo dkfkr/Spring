@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>user::login</title>
+	</head>
+	<body>
+		<h3>User 로그인</h3>
+	
+		<brform action="@{/user/loginSuccess}" method="post">
+			<input type="text" name="uid"/><br></br>
+			<input type="text" name="pass"/>
+			<input type="submit" value="로그인"/>
+		</form>
+
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h3>User6 수정</h3>
+		<a href="/Ch07/user6/index">메인</a>
+		<form action="/Ch07/user6/modify" method="post">
+			<table border="6">
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="uid" th:value="${user6DTO.uid}" readonly="readonly"/></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" th:value="${user6DTO.name}"/></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="birth" th:value="${user6DTO.birth}"/></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><input type="text" name="gender" th:value="${user6DTO.gender}"/></td>
+				</tr>
+				<tr>
+					<td>나이</td>
+					<td><input type="number" name="age" th:value="${user6DTO.age}"/></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td><input type="text" name="addr" th:value="${user6DTO.addr}"/></td>
+				</tr>
+				<tr>
+					<td>휴대폰번호</td>
+					<td><input type="text" name="hp" th:value="${user6DTO.hp}"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><input type="submit" value="수정"></td>
+				</tr>	
+			</table>
+		</form>
+	</body>
+</html>

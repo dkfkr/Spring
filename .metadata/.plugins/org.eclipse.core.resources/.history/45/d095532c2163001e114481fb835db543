@@ -1,0 +1,8 @@
+package kr.ch09.security;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SecurityConfigration {
+	
+}

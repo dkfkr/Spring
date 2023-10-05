@@ -1,0 +1,20 @@
+package kr.ch08.entity.board;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name="BoardComment")
+public class CommentEntity {
+	
+}
