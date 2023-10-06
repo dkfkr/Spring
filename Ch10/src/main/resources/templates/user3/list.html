@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>user3::list</title>
+		<style>
+	        body {
+	            text-align: center;
+	        }
+	        
+	        h3, h4 {
+	            text-align: center;
+	        }
+	        
+	        button {
+	            margin: 5px; 
+	        }
+	        
+	        form {
+	            margin: 0 auto; /* 가운데 정렬을 위한 스타일 */
+	            width: 300px; /* 폼의 너비를 조절하세요 */
+	            text-align: left; /* 폼 내부 요소의 텍스트 정렬 */
+	        }
+	        
+	        table {
+	            margin: 0 auto; /* 가운데 정렬을 위한 스타일 */
+	            width: 500px; /* 폼의 너비를 조절하세요 */
+	        }
+	     </style>   
+	</head>
+	<body>
+		<h3>user3 목록</h3>
+		
+		<a th:href="@{/index}">메인</a>
+		<a th:href="@{/user3/register}">등록</a>
+		
+		<table border="1">
+			<tr>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>휴대폰</th>
+				<th>나이</th>
+				<th>관리</th>
+			</tr>
+			
+			<tr th:each="user:${users}">
+				<td>[[${user.id}]]</td>
+				<td>[[${user.name}]]</td>
+				<td>[[${user.hp}]]</td>
+				<td>[[${user.age}]]</td>
+				<td>
+					<a th:href="@{/user3/modify(id=${user.id})}">수정</a>
+					<a th:href="@{/user3/delete(id=${user.id})}">삭제</a>
+				</td>
+			</tr>
+			
+		</table>	
+		
+	</body>
+</html>

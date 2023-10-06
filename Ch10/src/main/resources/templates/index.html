@@ -1,37 +1,137 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Ch10::index</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		<script th:src="@{/js/user1.js}"></script>
-		<script th:src="@{/js/user2.js}"></script>
-	</head>
-	<body>
-		<h3>Ch10.Spring REST API</h3>
-		
-		
-		<!-- 
-			GET    : /user1
-			GET    : /user1/{id}
-			POST   : /user1
-			PUT    : /user1
-			DELETE : /user1:{id}
-		-->
-		
-		<h4>User1</h4>
-		<button id="btnUser1s">       목록</button>
-		<button id="btnUser1">        조회</button>
-		<button id="btnUser1Register">등록</button>
-		<button id="btnUser1Modify">  수정</button>
-		<button id="btnUser1Delete">  삭제</button>		
-		
-		<h4>User2</h4>
-		<button id="btnUser2s">       목록</button>
-		<button id="btnUser2">        조회</button>
-		<button id="btnUser2Register">등록</button>
-		<button id="btnUser2Modify">  수정</button>
-		<button id="btnUser2Delete">  삭제</button>		
+<head>
+    <meta charset="UTF-8">
+    <title>Ch10::index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script th:src="@{/js/user1.js}"></script>
+    <script th:src="@{/js/user2.js}"></script>
+    <script th:src="@{/js/user3.js}"></script>
+    <script th:src="@{/js/user4.js}"></script>
+    <script th:src="@{/js/user5.js}"></script>
+    <script th:src="@{/js/user6.js}"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+        h3, h4 {
+            text-align: center;
+        }
+        button {
+			border: 0px;
+            margin: 5px;
+        }
+        table {
+            margin: 0 auto;
+        }
+        th{
+			
+			background-color: skyblue;
+            padding: 5px;
+        }
+        
+        td {
+			
+			background-color: azure;
+            padding: 5px;
+        }
 
-	</body>
+    </style>
+</head>
+<body>
+<h3>Ch10.Spring REST API</h3>
+
+<table>
+    <tr>
+        <th>User</th>
+        <th>API</th>
+        <th>Oracle Mybatis 실습</th>
+    </tr>
+    <tr>
+        <td>User1</td>
+        <td>
+            <button id="btnUser1s">목록</button>
+            <button id="btnUser1">조회</button>
+            <button id="btnUser1Register">등록</button>
+            <button id="btnUser1Modify">수정</button>
+            <button id="btnUser1Delete">삭제</button>
+        </td>
+        <td>
+            <a th:href="@{/user1/list}">목록</a>
+            <a th:href="@{/user1/register}">등록</a>
+        </td>
+    </tr>
+    <tr>
+        <td>User2</td>
+        <td>
+            <button id="btnUser2s">목록</button>
+            <button id="btnUser2">조회</button>
+            <button id="btnUser2Register">등록</button>
+            <button id="btnUser2Modify">수정</button>
+            <button id="btnUser2Delete">삭제</button>
+        </td>
+        <td>
+            <a th:href="@{/user2/list}">목록</a>
+            <a th:href="@{/user2/register}">등록</a>
+        </td>
+    </tr>
+    <tr>
+        <td>User3</td>
+        <td>
+            <button id="btnUser3s">목록</button>
+            <button id="btnUser3">조회</button>
+            <button id="btnUser3Register">등록</button>
+            <button id="btnUser3Modify">수정</button>
+            <button id="btnUser3Delete">삭제</button>
+        </td>
+        <td>
+            <a th:href="@{/user3/list}">목록</a>
+            <a th:href="@{/user3/register}">등록</a>
+        </td>
+    </tr>
+    <tr>
+        <td>User4</td>
+        <td>
+            <button id="btnUser4s">목록</button>
+            <button id="btnUser4">조회</button>
+            <button id="btnUser4Register">등록</button>
+            <button id="btnUser4Modify">수정</button>
+            <button id="btnUser4Delete">삭제</button>
+        </td>
+        <td>
+            <a th:href="@{/user4/list}">목록</a>
+            <a th:href="@{/user4/register}">등록</a>
+        </td>
+    </tr>
+    <tr>
+        <td>User5</td>
+        <td>
+            <button id="btnUser5s">목록</button>
+            <button id="btnUser5">조회</button>
+            <button id="btnUser5Register">등록</button>
+            <button id="btnUser5Modify">수정</button>
+            <button id="btnUser5Delete">삭제</button>
+        </td>
+        <td>
+            <a th:href="@{/user5/list}">목록</a>
+            <a th:href="@{/user5/register}">등록</a>
+        </td>
+    </tr>
+    <tr>
+        <td>User6</td>
+        <td>
+            <button id="btnUser6s">목록</button>
+            <button id="btnUser6">조회</button>
+            <button id="btnUser6Register">등록</button>
+            <button id="btnUser6Modify">수정</button>
+            <button id="btnUser6Delete">삭제</button>
+        </td>
+        <td>
+            <a th:href="@{/user6/list}">목록</a>
+            <a th:href="@{/user6/register}">등록</a>
+        </td>
+    </tr>
+</table>
+
+</body>
 </html>

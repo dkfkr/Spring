@@ -19,7 +19,7 @@ $(function(){
 		
 		$.ajax({
 			type: 'GET',
-			url: '/Ch10/user2/A202',
+			url: '/Ch10/user2/S101',
 			dataType: 'json',
 			success: function(data){
 				console.log(data);
