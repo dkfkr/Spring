@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="Ch06"/>
+<aop-project name="Ch11"/>
 <aop-project name="Ch01"/>
 <aop-project name="Ch02"/>
 <aop-project name="Ch03">
