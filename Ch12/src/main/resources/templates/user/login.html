@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+		<meta charset="UTF-8">
+		<title>Ch12::index</title>
+	</head>
+	<style>
+	        body {
+	            text-align: center;
+	        }
+	        
+	        h3, h4 {
+	            text-align: center;
+	        }
+	        
+	        button {
+	            margin: 5px; 
+	        }
+	        
+	        form {
+	            margin: 0 auto; /* 가운데 정렬을 위한 스타일 */
+	            width: 300px; /* 폼의 너비를 조절하세요 */
+	            text-align: left; /* 폼 내부 요소의 텍스트 정렬 */
+	        
+	        }
+	        
+	        table {
+	            margin: 0 auto; /* 가운데 정렬을 위한 스타일 */
+	            width: 500px; /* 폼의 너비를 조절하세요 */
+	        }
+	     </style>
+<body>
+		<h3>로그인</h3>
+	
+		<form >
+			<input type="text" name="uid"/>		
+			<input type="text" name="pass"/>		
+			<input type="submit" value="로그인"/>				
+		</form>
+		<br>
+		<a th:href="@{/oauth2/authorization/kakao}" style="display: inline-block; border: 1px black; background-color: aqua;">카카오 로그인</a>
+
+</body>
+
+</head>
