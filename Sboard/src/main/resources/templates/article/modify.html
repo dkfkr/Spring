@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      layout:decorate="/index.html">
+<div class="sboard-register" layout:fragment="content">
+    <div class="panel">
+        <div class="panel-body">
+            <form action="@{/article/modify}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>제목</label>
+                <input class="form-control" name="title" type="text" th:value="${article.title}">
+            </div>
+            <div class="form-group">
+                <label>파일 업로드</label>
+                <input type="file" name="fname" id="fileInput">
+            </div>
+            <div class="form-group">
+                <label>내용</label>
+                <textarea class="form-control" name="content" rows="10" style="resize:none;">[[${article.content}]]</textarea>
+            </div>
+            <div class="text-right">
+                <a th:href="@{/article/modify(no=${article.no})}">수정하기</a>
+                <a th:href="@{/article/view(no=${article.no})}">취소</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

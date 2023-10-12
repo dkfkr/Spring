@@ -28,7 +28,7 @@ public class SecurityConfiguration {
 				.csrf(CsrfConfigurer::disable) // 메서드 참조 연산자로 람다식을 간결하게 표현
 				// 폼 로그인 설정
 				.formLogin(config -> config.loginPage("/user/login")
-						.defaultSuccessUrl("/")
+						.defaultSuccessUrl("/article/list", true)
 						.failureUrl("/user/login?success=100")
 						.usernameParameter("uid")
 						.passwordParameter("pass"))
@@ -43,8 +43,8 @@ public class SecurityConfiguration {
 
 				// 인가 권한 설정
 				.authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-						.requestMatchers("/admin/**").hasAuthority("ADMIN")
-						.requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER")
+						.requestMatchers("/admin/**").hasRole("ADMIN")
+						.requestMatchers("/article/**").hasAnyRole("ADMIN", "MANAGER", "USER")
 						.requestMatchers("/user/**", "/vendor/**", "/js/**", "/dist/**", "/data/**", "/less/**","/index/**").permitAll()
 						.anyRequest().authenticated());
 

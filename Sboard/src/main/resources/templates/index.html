@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.thymeleaf.org">
 
 <head>
 
@@ -28,6 +29,22 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script>
+            const fileInput = document.getElementById('fileInput');
+            const fileList = document.getElementById('fileList');
+
+            fileInput.addEventListener('change', function () {
+                fileList.innerHTML = ''; // 파일 목록 초기화
+
+                const files = fileInput.files;
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const listItem = document.createElement('div');
+                    listItem.textContent = file.name; // 파일 이름 표시
+                    fileList.appendChild(listItem);
+                }
+            });
+     </script>
     <![endif]-->
 
 </head>
@@ -274,20 +291,20 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>공지사항</a>
+                        <a href="index.html"><i class="fa fa-bullhorn"></i> 공지사항</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>자유게시판</a>
+                        <a href="#"><i class="fa fa-comments-o"></i> 자유게시판</a>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> 문의하기</a>
+                        <a href="tables.html"><i class="fa fa-phone"></i> 문의하기</a>
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 자주묻는 질문</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>이벤트</a>
+                        <a href="#"><i class="glyphicon glyphicon-gift"></i> 이벤트</a>
                     </li>
                 </ul>
             </div>
@@ -303,10 +320,10 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">공지사항</h1>
                 </div>
-                <!-- /.col-lg-12 -->
-                <table>
+                <div class="col-lg-12">
+                    <div layout:fragment="content"></div>
+                </div>
 
-                </table>
 
 
             </div>

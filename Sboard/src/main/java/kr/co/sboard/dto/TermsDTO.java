@@ -14,7 +14,6 @@ import lombok.*;
 @Builder
 public class TermsDTO {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int no;
     private String terms;
     private String privacy;
