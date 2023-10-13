@@ -2,12 +2,15 @@ package kr.co.sboard.service;
 
 import kr.co.sboard.dto.ArticleDTO;
 import kr.co.sboard.dto.FileDTO;
+import kr.co.sboard.dto.PageRequestDTO;
+import kr.co.sboard.dto.PageResponseDTO;
 import kr.co.sboard.entity.ArticleEntity;
 import kr.co.sboard.entity.FileEntity;
 import kr.co.sboard.repository.ArticleRepository;
 import kr.co.sboard.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -22,7 +25,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -31,6 +33,7 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
     private final FileRepository fileRepository;
+    private final ModelMapper modelMapper;
 
     public void insertArticle(ArticleDTO dto) {
         // 글 등록
@@ -82,15 +85,28 @@ public class ArticleService {
 
     }
 
-    public Page<ArticleDTO> selectArticle(int pageNumber, int pageSize) {
+    public PageResponseDTO selectArticles(PageRequestDTO pageRequestDTO) {
 
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.DESC, "no");
+        Pageable pageable = pageRequestDTO.getPageable("no");
 
-        Page<ArticleEntity> articleEntities = articleRepository.findByParent(0, pageable);
+        //Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.DESC, "no");
+
+        Page<ArticleEntity> articleEntities = articleRepository.findByParentAndCate(0, pageRequestDTO.getCate(), pageable);
 
         Page<ArticleDTO> articles = articleEntities.map(ArticleEntity::toDTO);
 
-        return articles;
+        List<ArticleDTO> dtoList = articles.getContent()
+                                            .stream()
+                                            .map(entity -> modelMapper.map(entity, ArticleDTO.class))
+                                            .toList();
+
+        int totalElement = (int) articles.getTotalElements();
+
+        return PageResponseDTO.builder()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total(totalElement)
+                .build();
     }
 
     public ArticleDTO selectArticle(String no) {

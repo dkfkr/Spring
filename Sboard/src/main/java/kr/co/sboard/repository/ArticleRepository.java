@@ -13,6 +13,6 @@ public interface ArticleRepository extends JpaRepository<ArticleEntity, String> 
 
     Optional<ArticleEntity> findById(String no);
 
-    public Page<ArticleEntity> findByParent(int parent, Pageable pageable);
+    public Page<ArticleEntity> findByParentAndCate(int parent, String cate, Pageable pageable);
 
 }

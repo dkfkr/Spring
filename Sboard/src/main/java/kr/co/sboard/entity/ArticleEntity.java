@@ -3,6 +3,7 @@ package kr.co.sboard.entity;
 import jakarta.persistence.*;
 import jakarta.servlet.annotation.HttpConstraint;
 import kr.co.sboard.dto.ArticleDTO;
+import kr.co.sboard.dto.FileDTO;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,8 +37,8 @@ public class ArticleEntity {
     @CreationTimestamp
     private LocalDateTime rdate;
 
-    @OneToMany
-    @JoinColumn(name = "ano")
+    @OneToOne
+    @JoinColumn(name = "no")
     private FileEntity fileEntity;
 
     public ArticleDTO toDTO(){
@@ -55,6 +56,5 @@ public class ArticleEntity {
                 .rdate(rdate)
                 .build();
     }
-
 
 }

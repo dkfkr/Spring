@@ -18,19 +18,19 @@ public class UserController {
 
     @GetMapping("/user/login")
     public String login(){
-        return "user/login";
+        return "/user/login";
     }
 
     @GetMapping("/user/terms")
     public String terms(Model model){
         TermsEntity terms  = userService.findByTerms();
         model.addAttribute(terms);
-        return "user/terms";
+        return "/user/terms";
     }
 
     @GetMapping("/user/register")
     public String register(){
-        return "user/register";
+        return "/user/register";
     }
 
     @PostMapping("/user/register")

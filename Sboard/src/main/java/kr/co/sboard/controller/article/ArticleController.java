@@ -3,18 +3,15 @@ package kr.co.sboard.controller.article;
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.sboard.dto.ArticleDTO;
 import kr.co.sboard.dto.FileDTO;
-import kr.co.sboard.entity.ArticleEntity;
+import kr.co.sboard.dto.PageRequestDTO;
+import kr.co.sboard.dto.PageResponseDTO;
 import kr.co.sboard.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 public class ArticleController {
@@ -27,20 +24,21 @@ public class ArticleController {
     private ArticleService articleService;
 
     @GetMapping("/article/list")
-    public String list(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, Model model) {
-        Page<ArticleDTO> articles = articleService.selectArticle(page, size);
+    public String list(PageRequestDTO pageRequestDTO, Model model) {
+        PageResponseDTO pageResponseDTO = articleService.selectArticles(pageRequestDTO);
 
-        model.addAttribute("articles", articles);
+        model.addAttribute("pageResponse", pageResponseDTO);
 
-        return "article/list";
+        return "/article/list";
     }
 
-    @GetMapping("/article/register")
-    public String register() {
-        return "/article/register";
+
+    @GetMapping("/article/write")
+    public String register(Model model, PageRequestDTO pageRequestDTO) {
+        return "/article/write";
     }
 
-    @PostMapping("/article/register")
+    @PostMapping("/article/write")
     public String register(ArticleDTO dto) {
 
         String clientIP = request.getRemoteAddr();
@@ -52,20 +50,19 @@ public class ArticleController {
     }
 
     @GetMapping("/article/view")
-    public String view(String no, Model model){
-
+    public String view(String no, Model model) {
         ArticleDTO article = articleService.selectArticle(no);
         model.addAttribute("article", article);
-        return "article/view";
-
+        return "/article/view";
     }
+
 
     @GetMapping("/article/modify")
     public String modify(String no, Model model){
 
         ArticleDTO article = articleService.selectArticle(no);
         model.addAttribute("article", article);
-        return "article/modify";
+        return "/article/modify";
 
     }
 
@@ -73,5 +70,7 @@ public class ArticleController {
     public String modify() {
         return null;
     }
+
+
 
 }
